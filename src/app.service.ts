@@ -10,7 +10,7 @@ export class AppService {
     return this.prisma.user.findMany();
   }
 
-  getChannels(){
-    return this.prisma.channel.findMany()
+  getChannels() {
+    return this.prisma.channel.findMany();
   }
 }

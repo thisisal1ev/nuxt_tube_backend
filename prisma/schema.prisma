@@ -15,10 +15,10 @@ model User {
   verified Boolean  @default(false)
 
   videos    Video[]
-  Playlists Playlists[]
-  History   History[]
-  Liked     Liked[]
-  Channel   Channel?    @relation(fields: [channelId], references: [id])
+  playlists Playlists[]
+  history   History[]
+  liked     Liked[]
+  channel   Channel?    @relation(fields: [channelId], references: [id])
   channelId Int?
 
   createdAt DateTime @default(now())
@@ -53,13 +53,13 @@ model Video {
   comments Int @default(0)
   likes    Int @default(0)
 
-  User        User?      @relation(fields: [userId], references: [id])
+  user        User?      @relation(fields: [userId], references: [id])
   userId      Int?
-  Channel     Channel?   @relation(fields: [channelId], references: [id])
+  channel     Channel?   @relation(fields: [channelId], references: [id])
   channelId   Int?
-  Playlists   Playlists? @relation(fields: [playlistsId], references: [id])
+  playlists   Playlists? @relation(fields: [playlistsId], references: [id])
   playlistsId Int?
-  History     History?   @relation(fields: [historyId], references: [id])
+  history     History?   @relation(fields: [historyId], references: [id])
   historyId   Int?
   Liked       Liked?     @relation(fields: [likedId], references: [id])
   likedId     Int?
