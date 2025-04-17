@@ -6,16 +6,47 @@ export class VideosService {
   constructor(private readonly prisma: PrismaService) {}
 
   getAll() {
-    return this.prisma.video.findMany({
+    const video = this.prisma.video.findMany({
       include: {
         channel: {
           select: {
             name: true,
-            isOfficial: true,
             avatar: true,
+            isOfficial: true,
           },
         },
       },
     });
+
+    if (!video) {
+      throw new Error('Video not found');
+    }
+
+    return video;
+  }
+
+  getById(id: number) {
+    const video = this.prisma.video.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        channel: {
+          select: {
+            name: true,
+            alias: true,
+            avatar: true,
+            isOfficial: true,
+            subscribers: true,
+          },
+        },
+      },
+    });
+
+    if (!video) {
+      throw new Error('Video not found');
+    }
+
+    return video;
   }
 }
