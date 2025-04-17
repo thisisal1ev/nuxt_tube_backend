@@ -45,7 +45,7 @@ model Channel {
 model Video {
   id          Int         @id @default(autoincrement())
   title       String
-  image       String?
+  poster       String?
   description String?
   videoStatus VideoStatus @default(PUBLISHED)
 
