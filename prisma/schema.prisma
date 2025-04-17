@@ -45,8 +45,9 @@ model Channel {
 model Video {
   id          Int         @id @default(autoincrement())
   title       String
-  poster       String?
+  poster      String?
   description String?
+  isGame      Boolean?    @default(false)
   videoStatus VideoStatus @default(PUBLISHED)
 
   views    Int @default(0)
